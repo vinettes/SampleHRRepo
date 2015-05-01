@@ -10,6 +10,6 @@
             WHERE  author='MajorVersion'
         </sqlCheck>
     </preConditions>
-    <include file="v000/20150501_1.yaml" />
+    <include file="v000/20150501_1.xml" />
 
 </databaseChangeLog>
