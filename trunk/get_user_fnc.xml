@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="svinette" id="1" runOnChange="true">
+        <createProcedure>
+CREATE FUNCTION get_user_fnc(pUserId int) RETURNS varchar(30) CHARSET utf8
+BEGIN
+  declare tmp varchar(30);
+  --
+  select username into tmp from users where user_id = pUserId;
+	RETURN tmp;
+END;
+        </createProcedure>
+        <rollback>
+            drop function if exists get_user_fnc;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
