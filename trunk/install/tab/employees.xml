@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="vinettes" id="1">
+        <createTable tableName="employees">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="LAST_NAME" type="CHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="CHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEPARTMENT_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SALARY" type="DECIMAL(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DOB" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADDRESS" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="STATUS_IND" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
