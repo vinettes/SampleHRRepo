@@ -1,0 +1,185 @@
+databaseChangeLog:
+  changeSet:
+    id: 1
+    author: vinettes
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              constraints:
+                primaryKey: true
+            name: ID
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: NAME
+            type: CHAR(50)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: TERRITORY_ID
+            type: INT
+        tableName: departments
+  
+  changeSet:
+    id: 2
+    author: vinettes
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              constraints:
+                primaryKey: true
+            name: ID
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: LAST_NAME
+            type: CHAR(30)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: FIRST_NAME
+            type: CHAR(30)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: DEPARTMENT_ID
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: SALARY
+            type: DECIMAL(10, 2)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: DOB
+            type: date
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: ADDRESS
+            type: VARCHAR(100)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            defaultValueNumeric: 1
+            name: STATUS_IND
+            type: INT
+        tableName: employees
+  
+  changeSet:
+    id: 3
+    author: vinettes
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              constraints:
+                primaryKey: true
+            name: ID
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: NAME
+            type: VARCHAR(50)
+        tableName: territories
+  
+  changeSet:
+    id: 4
+    author: vinettes
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              constraints:
+                primaryKey: true
+            name: ID
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: STATUS_IND
+            type: INT
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: USERNAME
+            type: VARCHAR(30)
+        - column:
+            constraints:
+              constraints:
+                nullable: false
+            name: EMPLOYEE_ID
+            type: INT
+        tableName: users
+  
+  changeSet:
+    id: 5
+    author: vinettes
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: TERRITORY_ID
+        baseTableName: departments
+        constraintName: DEPARTMENTS_TERRITORIES_FK
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: ID
+        referencedTableName: territories
+  
+  changeSet:
+    id: 6
+    author: vinettes
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: DEPARTMENT_ID
+        baseTableName: employees
+        constraintName: EMPLOYEES_DEPARTMENTS_FK
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: ID
+        referencedTableName: departments
+  
+  changeSet:
+    id: 7
+    author: vinettes
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: EMPLOYEE_ID
+        baseTableName: users
+        constraintName: USERS_EMPLOYEES_FK
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: ID
+        referencedTableName: employees
+  
