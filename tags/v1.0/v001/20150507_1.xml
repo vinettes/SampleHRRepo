@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+  <changeSet author="vinettes" id="1">
+    <dropForeignKeyConstraint baseTableName="EMPLOYEES" constraintName="EMPLOYEES_DEPARTMENTS_FK"/>
+  </changeSet>
+  <changeSet author="vinettes" id="2">
+    <dropForeignKeyConstraint baseTableName="DEPARTMENTS" constraintName="DEPARTMENTS_TERRITORIES_FK"/>
+  </changeSet>
+  <changeSet author="vinettes" id="3">
+    <dropColumn columnName="ID" tableName="TERRITORIES"/>
+  </changeSet>  
+  <changeSet author="vinettes" id="4">
+    <dropColumn columnName="ID" tableName="DEPARTMENTS"/>
+  </changeSet>  
+  <changeSet author="vinettes" id="5">
+    <dropColumn columnName="DEPARTMENT_ID" tableName="EMPLOYEES"/>
+  </changeSet>  
+  <changeSet author="vinettes" id="6">
+    <dropColumn columnName="TERRITORY_ID" tableName="DEPARTMENTS"/>
+  </changeSet>  
+  <changeSet author="vinettes" id="7">
+    <addColumn tableName="TERRITORIES">
+        <column name="CODE" type="VARCHAR(10)">
+          <constraints primaryKey="true"/>
+        </column>
+    </addColumn>
+  </changeSet>
+  <changeSet author="vinettes" id="8">
+    <addColumn tableName="DEPARTMENTS">
+      <column name="CODE" type="VARCHAR(10)">
+        <constraints primaryKey="true"/>
+      </column>
+    </addColumn>
+  </changeSet>
+  <changeSet author="vinettes" id="9">
+    <addColumn tableName="EMPLOYEES">
+      <column name="DEPARTMENT_CODE" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+  <changeSet author="vinettes" id="10">
+    <addColumn tableName="DEPARTMENTS">
+      <column name="TERRITORY_CODE" type="VARCHAR(10)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+  <changeSet author="vinettes" id="13">
+    <addForeignKeyConstraint 
+            baseColumnNames="TERRITORY_CODE" 
+            baseTableName="DEPARTMENTS"
+            constraintName="DEPARTMENTS_TERRITORIES_FK"
+            onDelete="RESTRICT"
+            onUpdate="RESTRICT"
+            referencedColumnNames="CODE"
+            referencedTableName="TERRITORIES"/>
+  </changeSet>
+  <changeSet author="vinettes" id="14">
+    <addForeignKeyConstraint 
+            baseColumnNames="DEPARTMENT_CODE" 
+            baseTableName="EMPLOYEES"
+            constraintName="EMPLOYEES_DEPARTMENTS_FK"
+            onDelete="RESTRICT"
+            onUpdate="RESTRICT"
+            referencedColumnNames="CODE"
+            referencedTableName="DEPARTMENTS"/>
+  </changeSet>
+</databaseChangeLog>

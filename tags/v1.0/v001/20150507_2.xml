@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+  <changeSet author="vinettes" id="HR-101_1">
+    <dropColumn columnName="name" tableName="departments"/>
+  </changeSet>
+
+  <changeSet author="vinettes" id="HR-101_2">
+    <dropColumn columnName="last_name" tableName="employees"/>
+  </changeSet>
+
+  <changeSet author="vinettes" id="HR-101_3">
+    <dropColumn columnName="first_name" tableName="employees"/>
+  </changeSet>
+
+  <changeSet author="vinettes" id="HR-101_4">
+    <addColumn tableName="departments">
+      <column name="NAME" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+
+  <changeSet author="vinettes" id="HR-101_5">
+    <addColumn tableName="employees">
+      <column name="LAST_NAME" type="varchar(30)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+
+  <changeSet author="vinettes" id="HR-101_6">
+    <addColumn tableName="employees">
+      <column name="FIRST_NAME" type="varchar(30)">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+</databaseChangeLog>

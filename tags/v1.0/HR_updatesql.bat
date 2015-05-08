@@ -1,0 +1,1 @@
+Liquibase --changeLogFile=update.xml updatesql > script.sql
