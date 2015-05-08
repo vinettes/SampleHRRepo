@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+  <changeSet author="vinettes" id="1">
+    <insert tableName="territories">
+        <column name="code" type="varchar(10)" value="WestCA"/>
+        <column name="name" type="varchar(50)" value="Western Canada"/>
+    </insert>
+    <insert tableName="territories">
+        <column name="code" type="varchar(10)" value="EastCA"/>
+        <column name="name" type="varchar(50)" value="Eastern Canada"/>
+    </insert>
+  </changeSet>
+  <changeSet author="vinettes" id="2">
+    <insert tableName="departments">
+        <column name="code" type="varchar(10)" value="10"/>
+        <column name="name" type="varchar(50)" value="Sales"/>
+        <column name="territory_code" type="varchar(10)" value="EastCA"/>
+    </insert>
+    <insert tableName="departments">
+        <column name="code" type="varchar(10)" value="20"/>
+        <column name="name" type="varchar(50)" value="Accounting"/>
+        <column name="territory_code" type="varchar(10)" value="EastCA"/>
+    </insert>
+    <insert tableName="departments">
+        <column name="code" type="varchar(10)" value="30"/>
+        <column name="name" type="varchar(50)" value="Information Technology"/>
+        <column name="territory_code" type="varchar(10)" value="EastCA"/>
+    </insert>
+    <insert tableName="departments">
+        <column name="code" type="varchar(10)" value="40"/>
+        <column name="name" type="varchar(50)" value="Research and Development"/>
+        <column name="territory_code" type="varchar(10)" value="WestCA"/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>
